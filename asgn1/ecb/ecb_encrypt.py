@@ -1,5 +1,5 @@
-from mylib import *
 
+from mylib import *
 #1. Read File
 #2. Create AES object
 #3. Steps of Encryption:
@@ -19,22 +19,6 @@ def main():
 		
 	ecb_encrypt(imgfile, len(imgfile))
 
-def ecb_encrypt(imgfile, filesize):
-	key = b'Sixteen byte key'
-	aes_obj = AES.new(key, AES.MODE_ECB)
-	frm = 0
-	to = 16
-	while to <= filesize :
-		block = imgfile[frm : to]
-		if len(block) < AES.block_size:
-			block = pad_pkcs7(block)
-		file = open("encrypted","ab")
-		file.write(aes_obj.encrypt(block))
-		file.close()
-		frm += 16
-		to +=16
-	
-	print("encryption completed")
 		
 	
 
